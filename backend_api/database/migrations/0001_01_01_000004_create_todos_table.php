@@ -15,12 +15,14 @@ return new class extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->enum('status', ['pending', 'completed'])->default('pending');
-            $table->string('pdf_path')->nullable();
-            $table->string('pdf_original_name')->nullable();
+            $table->enum('priority', ['low', 'medium', 'high', 'urgent'])->default('medium');
+            $table->date('due_date')->nullable();
             $table->timestamps();
             
             // Indexes for better performance
             $table->index(['user_id', 'status']);
+            $table->index(['user_id', 'priority']);
+            $table->index(['user_id', 'due_date']);
             $table->index(['user_id', 'created_at']);
         });
     }
