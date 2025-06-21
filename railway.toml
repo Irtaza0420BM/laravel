@@ -3,7 +3,7 @@ builder = "nixpacks"
 
 [deploy]
 startCommand = "cd backend_api && php artisan migrate --force && php artisan storage:link && php artisan serve --host=0.0.0.0 --port=$PORT"
-healthcheckPath = "/api/health"
+healthcheckPath = "/health"
 healthcheckTimeout = 100
 restartPolicyType = "on_failure"
 

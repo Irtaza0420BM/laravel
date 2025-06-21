@@ -24,6 +24,11 @@ Route::post('/resend-otp', [AuthController::class, 'resendOtp']);
 // Public debug route for PDF upload testing (no auth required)
 Route::post('/debug-pdf-upload-public', [TodoController::class, 'debugPdfUpload']);
 
+// Health check route for Railway
+Route::get('/health', function () {
+    return response()->json(['status' => 'ok']);
+});
+
 // Protected routes
 Route::middleware('auth:sanctum')->group(function () {
     // Authentication routes
