@@ -1,17 +1,19 @@
+[variables]
+COMPOSER_ALLOW_SUPERUSER = '1'
+
 [phases.setup]
-nixPkgs = ['php82', 'php82Packages.composer', 'nodejs_18']
+nixPkgs = ['php82', 'php82Packages.composer']
 
 [phases.build]
 cmds = [
-    'cd backend_api',
+    'cp -r backend_api/* .',
+    'cp backend_api/.env.example .env || echo "No .env.example found"',
     'composer install --optimize-autoloader --no-dev --no-interaction',
     'php artisan key:generate --force',
     'php artisan config:cache',
     'php artisan route:cache', 
-    'php artisan view:cache',
-    'php artisan migrate --force',
-    'php artisan storage:link'
+    'php artisan view:cache'
 ]
 
 [start]
-cmd = 'cd backend_api && php artisan serve --host=0.0.0.0 --port=$PORT'
+cmd = 'php artisan serve --host=0.0.0.0 --port=$PORT'
