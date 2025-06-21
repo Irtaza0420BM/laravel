@@ -1,0 +1,13 @@
+[build]
+builder = "nixpacks"
+
+[deploy]
+startCommand = "cd backend_api && php artisan serve --host=0.0.0.0 --port=$PORT"
+healthcheckPath = "/"
+healthcheckTimeout = 100
+restartPolicyType = "on_failure"
+
+[environments.production.variables]
+APP_ENV = "production"
+APP_DEBUG = "false"
+LOG_CHANNEL = "errorlog"
