@@ -1,0 +1,60 @@
+# Laravel specific files
+/.env
+/.env.*
+!.env.example
+
+# Dependencies
+/vendor/
+/node_modules/
+
+# Laravel storage and cache
+/storage/*.key
+/storage/logs/*
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+/public/storage
+/public/hot
+
+# Bootstrap cache
+/bootstrap/cache/*
+!bootstrap/cache/.gitignore
+
+# IDE/Editor specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Composer
+composer.phar
+
+# PHPUnit & coverage
+.phpunit.result.cache
+/coverage/
+
+# dotenv editor support
+.env.local
+.env.development
+.env.testing
+.env.production
+
+# Laravel Telescope (if used)
+/telescope/
+
+# Laravel Horizon (if used)
+/horizon/
+
+# Backup files
+*.backup
+*.bak
+
+# Temporary files
+*.tmp
+*.temp
